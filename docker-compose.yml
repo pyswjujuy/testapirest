@@ -15,8 +15,10 @@ services:
     volumes:
       # Permite a Watchtower acceder y controlar el demonio de Docker
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 # Watchtower revisará Docker Hub cada 30 segundos
+    command: --interval 30 --cleanup # Watchtower revisará Docker Hub cada 30 segundos
     
     environment:
       # Watchtower solo monitoreará el contenedor cuyo nombre (container_name) sea 'my-node-app'
       - WATCHTOWER_SCOPE=my-node-app
+      - WATCHTOWER_USERNAME=pyswjujuy
+      - WATCHTOWER_PASSWORD=admin*123
