@@ -6,7 +6,7 @@ const app = express();
 
 // Definimos una ruta GET
 app.get('/', (req, res) => {
-  res.json({ mensaje: 'Hola HIA 7000!!!' });
+  res.json({ mensaje: 'Hola HIA 9000!!!' });
 });
 
 // Iniciamos el servidor
