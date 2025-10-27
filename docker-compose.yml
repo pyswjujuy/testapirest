@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   my-node-app:
-    image: pyswjujuy/my-node-app:latest
+    image: pyswjujuy/my-node-app:1.0.1
     container_name: my-node-app # Definir el nombre del contenedor para Watchtower
     restart: unless-stopped # Asegura que se reinicie si falla o después de la actualización
     ports:
