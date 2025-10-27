@@ -20,7 +20,21 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t pyswjujuy/my-node-app:1.0.1 .
+      run: |
+        IMAGE_NAME=pyswjujuy/my-node-app
+        COMMIT_TAG=${{ github.sha }}
+
+        # Construir imagen con el hash del commit
+        docker build -t $IMAGE_NAME:$COMMIT_TAG .
+
+        # También etiquetar como "latest"
+        docker tag $IMAGE_NAME:$COMMIT_TAG $IMAGE_NAME:latest
 
     - name: Push Docker image to Docker Hub
-      run: docker push pyswjujuy/my-node-app:1.0.1
+      run: |
+        IMAGE_NAME=pyswjujuy/my-node-app
+        COMMIT_TAG=${{ github.sha }}
+
+        docker push $IMAGE_NAME:$COMMIT_TAG
+        docker push $IMAGE_NAME:latest
+
