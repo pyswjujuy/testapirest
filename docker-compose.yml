@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  my-node-app:
+    image: pyswjujuy/my-node-app:latest
+    container_name: my-node-app # Definir el nombre del contenedor para Watchtower
+    restart: unless-stopped # Asegura que se reinicie si falla o después de la actualización
+    ports:
+      - "3000:3000"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower # Nombrar el contenedor ayuda a gestionarlo
+    restart: unless-stopped
+    volumes:
+      # Permite a Watchtower acceder y controlar el demonio de Docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 # Watchtower revisará Docker Hub cada 30 segundos
+    
+    environment:
+      # Watchtower solo monitoreará el contenedor cuyo nombre (container_name) sea 'my-node-app'
+      - WATCHTOWER_SCOPE=my-node-app
