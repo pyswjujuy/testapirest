@@ -19,6 +19,6 @@ services:
     
     environment:
       # Watchtower solo monitoreará el contenedor cuyo nombre (container_name) sea 'my-node-app'
-      #- WATCHTOWER_INCLUDE_STOPPED=my-node-app
+      - WATCHTOWER_INCLUDE_STOPPED=my-node-app
       - WATCHTOWER_USERNAME=pyswjujuy
       - WATCHTOWER_PASSWORD=admin*123
