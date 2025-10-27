@@ -23,4 +23,4 @@ jobs:
       run: docker build -t my-node-app:latest .
 
     - name: Push Docker image to Docker Hub
-      run: docker push my-node-app:latest
+      run: docker push pyswjujuy/my-node-app:latest
